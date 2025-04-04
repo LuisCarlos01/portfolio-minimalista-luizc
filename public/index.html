@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta
+      name="description"
+      content="Portfolio profissional de Desenvolvedor Web"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+
+    <!-- Preload de fontes críticas para melhorar o FCP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Adicionar Font Awesome para os ícones -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <!-- Opcional: você pode adicionar preload das suas fontes principais aqui -->
+    <!-- <link rel="preload" href="/fonts/your-main-font.woff2" as="font" type="font/woff2" crossorigin /> -->
+
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Preload da imagem de hero para melhorar o LCP (substituir pelo caminho da sua imagem principal) -->
+    <link rel="preload" as="image" href="%PUBLIC_URL%/images/photos/perfil.jpg" />
+
+    <title>Portfólio | Luiz Carlos</title>
+
+    <!-- Inicialização rápida do CSS para evitar flash of unstyled content -->
+    <style>
+      :root {
+        --bg-color: #121212;
+        --text-color: #ffffff;
+      }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        margin: 0;
+        padding: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      .app-preloader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: var(--bg-color);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+      .app-preloader::after {
+        content: "";
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        border-top-color: #9b59b6;
+        animation: spin 1s linear infinite;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+    </style>
+    
+    <!-- Script para supressar erros de WebSocket -->
+    <script>
+      // Evita que erros de WebSocket sejam mostrados no console
+      window.addEventListener('error', function(event) {
+        if (event.message && event.message.includes('WebSocket')) {
+          event.preventDefault();
+          console.debug('WebSocket connection issue suppressed');
+          return true;
+        }
+      }, true);
+      
+      // Cria um WebSocket dummy para substituir o comportamento padrão
+      if (typeof WebSocket !== 'undefined') {
+        const OriginalWebSocket = WebSocket;
+        window.WebSocket = function(url, protocols) {
+          const ws = new OriginalWebSocket(url, protocols);
+          
+          // Suprimir erro de conexão
+          ws.onerror = function(e) {
+            console.debug('WebSocket error suppressed', url);
+          };
+          
+          return ws;
+        };
+        window.WebSocket.prototype = OriginalWebSocket.prototype;
+      }
+    </script>
+  </head>
+  <body>
+    <noscript
+      >Você precisa ativar o JavaScript para executar este aplicativo.</noscript
+    >
+    <!-- Preloader inicial até que o React seja carregado -->
+    <div id="root">
+      <div class="app-preloader"></div>
+    </div>
+
+    <!-- Script para monitorar FID (First Input Delay) -->
+    <script>
+      !(function (n, e) {
+        var t,
+          o,
+          i,
+          c = [],
+          f = { passive: !0, capture: !0 },
+          r = new Date(),
+          a = "pointerup",
+          u = "pointercancel";
+        function p(n, c) {
+          t || ((t = c), (o = n), (i = new Date()), w(e), s());
+        }
+        function s() {
+          o >= 0 &&
+            o < i - r &&
+            (c.forEach(function (n) {
+              n(o, t);
+            }),
+            (c = []));
+        }
+        function l(t) {
+          if (t.cancelable) {
+            var o =
+              (t.timeStamp > 1e12 ? new Date() : performance.now()) -
+              t.timeStamp;
+            "pointerdown" == t.type
+              ? (function (t, o) {
+                  function i() {
+                    p(t, o), r();
+                  }
+                  function c() {
+                    r();
+                  }
+                  function r() {
+                    e(a, i, f), e(u, c, f);
+                  }
+                  n(a, i, f), n(u, c, f);
+                })(o, t)
+              : p(o, t);
+          }
+        }
+        function w(n) {
+          [
+            "click",
+            "mousedown",
+            "keydown",
+            "touchstart",
+            "pointerdown",
+          ].forEach(function (e) {
+            n(e, l, f);
+          });
+        }
+        w(n),
+          (self.perfMetrics = self.perfMetrics || {}),
+          (self.perfMetrics.onFirstInputDelay = function (n) {
+            c.push(n), s();
+          });
+      })(addEventListener, removeEventListener);
+    </script>
+  </body>
+</html>

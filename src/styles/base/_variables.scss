@@ -1,0 +1,121 @@
+// Variáveis de cores principais
+$background-dark: #121212;
+$background-light: #f4f4f8;
+$card-bg-dark: #1e1e1e;
+$card-bg-light: #ffffff;
+$text-dark: #f4f4f8;
+$text-light: #121212;
+
+// Cores primárias
+$primary-color: #9b59b6;
+$primary-color-dark: #8e44ad;
+$primary-color-soft: #b980c4;
+$primary-rgb: 155, 89, 182;
+
+// Paleta de roxos aprimorada
+$purple-soft: #9b59b6;
+$purple-hover: #8e44ad;
+$purple-light: #b980c4;
+$purple-dark: #6d4096;
+$purple-gradient-start: rgba(155, 89, 182, 0.9);
+$purple-gradient-end: rgba(142, 68, 173, 0.9);
+
+// Cores de destaque
+$accent-cyan: #3498db;
+$accent-green: #2ecc71;
+$accent-yellow: #f1c40f;
+$accent-orange: #e67e22;
+
+// Cores de feedback
+$gray-light: #a0a0a0;
+$gray-dark: #777777;
+$error-color: #e74c3c;
+$success-color: #2ecc71;
+$warning-color: #f39c12;
+$info-color: #3498db;
+
+// Cores com transparência
+$overlay-dark: rgba(18, 18, 18, 0.7);
+$overlay-light: rgba(255, 255, 255, 0.7);
+$shadow-color: rgba(0, 0, 0, 0.15);
+$highlight-color: rgba(255, 255, 255, 0.05);
+
+// Variáveis de breakpoints
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+
+// Variáveis de fontes
+$font-primary: "Poppins", sans-serif;
+$font-secondary: "Roboto", sans-serif;
+$font-size-base: 16px;
+$font-size-sm: 0.875rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-xxl: 2rem;
+$font-size-hero: 3rem;
+
+// Variáveis de espaçamento
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 2rem;
+$spacing-lg: 4rem;
+$spacing-xl: 6rem;
+
+// Variáveis de animação
+$transition-fast: 0.2s ease;
+$transition-default: 0.3s ease;
+$transition-slow: 0.5s ease;
+
+// Variáveis de border-radius
+$border-radius-sm: 5px;
+$border-radius-md: 10px;
+$border-radius-lg: 20px;
+$border-radius-circle: 50%;
+
+// Variáveis de sombras
+$shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.1);
+$shadow-md: 0 5px 15px rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.25);
+
+// Exportar variáveis para uso em CSS
+:root {
+  --background: #{$background-dark};
+  --card-bg: #{$card-bg-dark};
+  --text-color: #{$text-dark};
+  --text-secondary: #{$gray-light};
+  --primary-color: #{$primary-color};
+  --primary-color-dark: #{$primary-color-dark};
+  --primary-color-soft: #{$primary-color-soft};
+  --primary-rgb: #{$primary-rgb};
+  --tag-bg: rgba(155, 89, 182, 0.1);
+  --border-color: rgba(155, 89, 182, 0.2);
+  --purple-soft: #{$purple-soft};
+  --purple-hover: #{$purple-hover};
+  --purple-light: #{$purple-light};
+  --purple-dark: #{$purple-dark};
+  --gray-light: #{$gray-light};
+  --gray-dark: #{$gray-dark};
+  --error-color: #{$error-color};
+  --success-color: #{$success-color};
+  --warning-color: #{$warning-color};
+  --info-color: #{$info-color};
+  --accent-cyan: #{$accent-cyan};
+  --accent-green: #{$accent-green};
+  --accent-yellow: #{$accent-yellow};
+  --accent-orange: #{$accent-orange};
+  --overlay-dark: #{$overlay-dark};
+  --highlight-color: #{$highlight-color};
+  --shadow-color: #{$shadow-color};
+  --font-family: #{$font-primary};
+}
+
+// Tema claro (para uso futuro)
+.light-theme {
+  --background: #{$background-light};
+  --card-bg: #{$card-bg-light};
+  --text-color: #{$text-light};
+  --overlay-dark: #{$overlay-light};
+}

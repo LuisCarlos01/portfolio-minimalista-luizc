@@ -1,0 +1,115 @@
+@use "../base/variables" as vars;
+@use "../base/mixins" as mixins;
+
+footer {
+  background-color: #000;
+  position: relative;
+  width: 100%;
+  padding: 2rem 0;
+  overflow: hidden;
+  z-index: 1;
+  border-top: 1px solid rgba(155, 89, 182, 0.2);
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at center,
+      rgba(155, 89, 182, 0.05) 0%,
+      transparent 70%
+    );
+    z-index: -1;
+  }
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  gap: 2rem;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+
+  .footer-copyright {
+    font-family: "Poppins", sans-serif;
+    font-size: 0.9rem;
+    color: var(--gray-light);
+    position: relative;
+    transition: all 0.3s ease;
+
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: linear-gradient(to right, var(--purple-soft), transparent);
+      transition: width 0.4s ease;
+    }
+  }
+
+  &:hover {
+    .footer-copyright {
+      color: white;
+      text-shadow: 0 0 8px rgba(155, 89, 182, 0.5);
+
+      &::before {
+        width: 100%;
+      }
+    }
+
+    .year-number {
+      color: var(--purple-soft);
+    }
+  }
+
+  .year-number {
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+
+  .social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+    color: var(--gray-light);
+    background-color: rgba(30, 30, 30, 0.6);
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+    &:hover {
+      color: #fff;
+      background-color: var(--purple-soft);
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(155, 89, 182, 0.4);
+    }
+  }
+}

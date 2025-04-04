@@ -1,0 +1,270 @@
+@use "variables" as vars;
+@use "sass:color";
+
+// Mixins para responsividade
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm {
+    @media (min-width: vars.$breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (min-width: vars.$breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (min-width: vars.$breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (min-width: vars.$breakpoint-xl) {
+      @content;
+    }
+  }
+}
+
+// Flexbox mixins
+@mixin flex($direction: row, $justify: center, $align: center, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+// Grid mixins
+@mixin grid($columns: 1fr, $rows: auto, $gap: vars.$spacing-md) {
+  display: grid;
+  grid-template-columns: $columns;
+  grid-template-rows: $rows;
+  gap: $gap;
+}
+
+// Posicionamento absoluto
+@mixin absolute-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin absolute-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+// Transições
+@mixin transition($properties...) {
+  $transitions: ();
+  @each $property in $properties {
+    $transitions: append($transitions, $property vars.$transition-default, comma);
+  }
+  transition: $transitions;
+}
+
+// Sombras
+@mixin box-shadow($level: md) {
+  @if $level == sm {
+    box-shadow: vars.$shadow-sm;
+  } @else if $level == md {
+    box-shadow: vars.$shadow-md;
+  } @else if $level == lg {
+    box-shadow: vars.$shadow-lg;
+  }
+}
+
+// Truncar texto
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// Botões
+@mixin button(
+  $background: vars.$purple-soft,
+  $color: vars.$text-dark,
+  $hover-bg: vars.$purple-hover
+) {
+  display: inline-block;
+  background-color: $background;
+  color: $color;
+  padding: 0.6rem 1.5rem;
+  border-radius: vars.$border-radius-sm;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color vars.$transition-default,
+    transform vars.$transition-default,
+    box-shadow vars.$transition-default;
+
+  &:hover,
+  &:focus {
+    background-color: $hover-bg;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px vars.$shadow-color;
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Glassmorphism
+@mixin glass-effect($opacity: 0.1, $blur: 10px) {
+  background-color: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// Efeito Neon
+@mixin neon-glow($color: vars.$purple-soft, $intensity: 1) {
+  text-shadow: 0 0 5px rgba($color, 0.5 * $intensity), 
+               0 0 10px rgba($color, 0.3 * $intensity);
+}
+
+// Card básico
+@mixin card {
+  background-color: var(--card-bg);
+  border-radius: vars.$border-radius-md;
+  padding: vars.$spacing-md;
+  @include box-shadow(md);
+}
+
+// Novos mixins
+
+// Gradiente de texto
+@mixin text-gradient($start: vars.$purple-soft, $end: vars.$purple-light) {
+  background-image: linear-gradient(135deg, $start, $end);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+// Borda com gradiente
+@mixin gradient-border($width: 1px, $start: vars.$purple-soft, $end: vars.$purple-light) {
+  position: relative;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: -$width;
+    left: -$width;
+    right: -$width;
+    bottom: -$width;
+    background: linear-gradient(135deg, $start, $end);
+    border-radius: calc(vars.$border-radius-md + $width);
+    z-index: -1;
+  }
+}
+
+// Destaques e realces
+@mixin highlight($color: vars.$highlight-color) {
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 30%;
+    bottom: 0;
+    left: 0;
+    background-color: $color;
+    z-index: -1;
+    border-radius: 3px;
+  }
+}
+
+// Efeito hover de escala
+@mixin hover-scale($scale: 1.05) {
+  transition: transform vars.$transition-default;
+  
+  &:hover {
+    transform: scale($scale);
+  }
+}
+
+// Efeito elevação
+@mixin elevate($level: 1) {
+  transition: transform vars.$transition-default, 
+              box-shadow vars.$transition-default;
+  
+  @if $level == 1 {
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    }
+  } @else if $level == 2 {
+    &:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+// Botão com borda em destaque
+@mixin button-outline($color: vars.$purple-soft, $hover-color: vars.$purple-light) {
+  position: relative;
+  background: transparent;
+  color: $color;
+  border: 2px solid $color;
+  border-radius: vars.$border-radius-sm;
+  padding: 0.5rem 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  overflow: hidden;
+  transition: color vars.$transition-default, 
+              border-color vars.$transition-default,
+              transform vars.$transition-default;
+              
+  &:hover {
+    color: $hover-color;
+    border-color: $hover-color;
+    transform: translateY(-3px);
+  }
+}
+
+// Spinner de carregamento
+@mixin loading-spinner($size: 30px, $color: vars.$purple-soft, $thickness: 3px) {
+  width: $size;
+  height: $size;
+  border: $thickness solid rgba($color, 0.2);
+  border-top-color: $color;
+  border-radius: 50%;
+  animation: spinner 0.8s linear infinite;
+  
+  @keyframes spinner {
+    to { transform: rotate(360deg); }
+  }
+}
+
+// Responsividade para fontes
+@mixin responsive-font($min-size: 1rem, $max-size: 2rem, $min-width: 320px, $max-width: 1200px) {
+  font-size: calc(#{$min-size} + #{strip-unit($max-size - $min-size)} * 
+              ((100vw - #{$min-width}) / #{strip-unit($max-width - $min-width)}));
+              
+  @media screen and (max-width: $min-width) {
+    font-size: $min-size;
+  }
+  
+  @media screen and (min-width: $max-width) {
+    font-size: $max-size;
+  }
+}
+
+// Função auxiliar para strip-unit
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
