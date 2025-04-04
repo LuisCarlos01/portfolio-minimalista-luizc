@@ -1,0 +1,151 @@
+// Importar variáveis
+@use "variables" as *;
+
+// Estilos de tipografia
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-primary;
+  color: $text-dark;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: $font-size-hero;
+  letter-spacing: -0.02em;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 2.5rem;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: 2rem;
+  }
+}
+
+h2 {
+  font-size: $font-size-xxl;
+  
+  @media (max-width: $breakpoint-md) {
+    font-size: 1.8rem;
+  }
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.5rem;
+  }
+}
+
+h3 {
+  font-size: $font-size-xl;
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: 1.25rem;
+  }
+}
+
+h4 {
+  font-size: $font-size-lg;
+}
+
+h5 {
+  font-size: $font-size-md;
+  font-weight: 500;
+}
+
+h6 {
+  font-size: $font-size-sm;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+p {
+  font-size: $font-size-md;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  color: $text-dark;
+  
+  @media (max-width: $breakpoint-sm) {
+    font-size: 0.95rem;
+  }
+}
+
+a {
+  color: $primary-color;
+  text-decoration: none;
+  transition: color $transition-fast;
+  
+  &:hover {
+    color: $primary-color-dark;
+  }
+}
+
+.text-highlight {
+  color: $primary-color;
+  font-weight: 600;
+}
+
+.text-muted {
+  color: $gray-light;
+  font-size: 0.9em;
+}
+
+.subtitle {
+  color: $gray-light;
+  font-size: $font-size-md;
+  margin-bottom: 2rem;
+  max-width: 600px;
+}
+
+.section-title {
+  position: relative;
+  margin-bottom: 3rem;
+  text-align: center;
+  
+  h2 {
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    font-weight: 700;
+    position: relative;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: 25%;
+      bottom: 0;
+      width: 50%;
+      height: 3px;
+      background: linear-gradient(to right, $purple-soft, $purple-hover);
+      border-radius: 2px;
+    }
+  }
+  
+  .subtitle {
+    margin: 1rem auto 0;
+    text-align: center;
+  }
+}
+
+// Estilos para texto com efeito de máquina de escrever
+.typed-text {
+  color: $primary-color;
+  font-weight: 600;
+}
+
+// Estilo para texto code
+code {
+  font-family: monospace;
+  background-color: rgba(155, 89, 182, 0.1);
+  padding: 0.2em 0.4em;
+  border-radius: $border-radius-sm;
+  font-size: 0.9em;
+}
+
+// Estilo para blockquote
+blockquote {
+  border-left: 4px solid $primary-color;
+  padding-left: 1rem;
+  margin-left: 0;
+  font-style: italic;
+  color: $gray-light;
+} 

@@ -146,10 +146,12 @@ const Header = () => {
         </div>
         <ul className={`navlinks ${isMenuOpen ? 'open' : ''}`} ref={navLinksRef}>
           <li><a href="#home" onClick={(e) => handleNavigation(e, 'home')}>Home</a></li>
+          <li><a href="#about" onClick={(e) => handleNavigation(e, 'about')}>Sobre</a></li>
           <li><a href="#resume" onClick={(e) => handleNavigation(e, 'resume')}>Resume</a></li>
           <li><a href="#skills" onClick={(e) => handleNavigation(e, 'skills')}>Skills</a></li>
-          <li><a href="#contact" onClick={(e) => handleNavigation(e, 'contact')}>Contact</a></li>
           <li><a href="#portfolio" onClick={(e) => handleNavigation(e, 'portfolio')}>Portfolio</a></li>
+          <li><a href="#todo" onClick={(e) => handleNavigation(e, 'todo')}>Tarefas</a></li>
+          <li><a href="#contact" onClick={(e) => handleNavigation(e, 'contact')}>Contact</a></li>
         </ul>
       </nav>
     </header>

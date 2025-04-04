@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Preloader from "./components/Preloader";
-import HeroSection from "./components/HeroSection";
 import SkillsSection from "./components/SkillsSection";
 import PortfolioSection from "./components/PortfolioSection";
 import ContactSection from "./components/ContactSection";
@@ -10,45 +9,40 @@ import { SectionProvider } from "./contexts/SectionContext";
 import ResumeSection from "./components/ResumeSection";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ContactPage from "./pages/contact";
+import Header from "./components/Header";
+import HomeSection from "./components/HomeSection";
+import ProjectModal from "./components/ProjectModal";
+import SkillPreviewModal from "./components/SkillPreviewModal";
+import PageTransition from "./components/PageTransition";
+import CursorProvider from "./contexts/CursorContext";
+import { isMobile } from "./utils/device";
+import AboutSection from "./components/AboutSection";
+import Todo from "./components/Todo";
+import TransitionParticles from "./components/TransitionParticles";
 
 function App() {
   // Efeito para aplicar estilos iniciais às seções
   useEffect(() => {
-    // Garantir que a seção home seja visível inicialmente
-    const homeSection = document.getElementById("home");
-    if (homeSection) {
-      homeSection.style.display = "block";
-      homeSection.style.opacity = "1";
-    }
-
-    // Garantir que as outras seções estejam ocultas inicialmente
-    const otherSections = document.querySelectorAll(
-      ".section-container:not(#home)"
-    );
-    otherSections.forEach((section) => {
-      section.style.display = "none";
-      section.style.opacity = "0";
-    });
-
-    // Verificar se há algum hash na URL e mostrar a seção correspondente
+    // Verificar se há algum hash na URL
     const hash = window.location.hash.replace("#", "");
-    if (
-      hash &&
-      ["home", "skills", "portfolio", "contact", "resume"].includes(hash)
-    ) {
-      const hashSection = document.getElementById(hash);
-      if (hashSection) {
-        // Ocultar todas as seções
-        document.querySelectorAll(".section-container").forEach((section) => {
-          section.style.display = "none";
-          section.style.opacity = "0";
-        });
-
-        // Mostrar a seção do hash
-        hashSection.style.display = "block";
-        hashSection.style.opacity = "1";
+    
+    // Lista de seções válidas
+    const validSections = ["home", "skills", "portfolio", "contact", "resume", "todo", "about"];
+    const initialSection = validSections.includes(hash) ? hash : "home";
+    
+    // Configurar a exibição inicial de seções
+    document.querySelectorAll(".section-container").forEach((section) => {
+      if (section.id === initialSection) {
+        // Mostrar a seção inicial
+        section.style.display = "block";
+        section.style.opacity = "1";
+        section.style.zIndex = "1"; // Garantir que a seção está visível na pilha z-index
+      } else {
+        // Ocultar outras seções
+        section.style.display = "none";
+        section.style.opacity = "0";
       }
-    }
+    });
   }, []);
 
   return (
@@ -60,16 +54,25 @@ function App() {
           element={
             <SectionProvider>
               <div className="app-container">
+                <PageTransition />
+                <TransitionParticles />
                 <Preloader />
+                <Header />
                 <div className="content" id="content">
                   <div id="home" className="section-container">
-                    <HeroSection />
+                    <HomeSection />
+                  </div>
+                  <div id="about" className="section-container">
+                    <AboutSection />
                   </div>
                   <div id="skills" className="section-container">
                     <SkillsSection />
                   </div>
                   <div id="portfolio" className="section-container">
                     <PortfolioSection />
+                  </div>
+                  <div id="todo" className="section-container">
+                    <Todo />
                   </div>
                   <div id="contact" className="section-container">
                     <ContactSection />

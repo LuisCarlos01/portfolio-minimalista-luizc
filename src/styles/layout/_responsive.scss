@@ -1,0 +1,245 @@
+@use "../base/variables" as *;
+
+// Mixins para responsividade
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == "xs" {
+    @media (max-width: #{$breakpoint-sm - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == "sm" {
+    @media (min-width: #{$breakpoint-sm}) and (max-width: #{$breakpoint-md - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == "md" {
+    @media (min-width: #{$breakpoint-md}) and (max-width: #{$breakpoint-lg - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == "lg" {
+    @media (min-width: #{$breakpoint-lg}) and (max-width: #{$breakpoint-xl - 1}) {
+      @content;
+    }
+  } @else if $breakpoint == "xl" {
+    @media (min-width: #{$breakpoint-xl}) {
+      @content;
+    }
+  }
+}
+
+// Mixins para mobile-first ou desktop-first
+@mixin mobile-up {
+  @media (min-width: #{$breakpoint-sm}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: #{$breakpoint-md}) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: #{$breakpoint-lg}) {
+    @content;
+  }
+}
+
+@mixin large-desktop-up {
+  @media (min-width: #{$breakpoint-xl}) {
+    @content;
+  }
+}
+
+@mixin desktop-down {
+  @media (max-width: #{$breakpoint-lg - 1}) {
+    @content;
+  }
+}
+
+@mixin tablet-down {
+  @media (max-width: #{$breakpoint-md - 1}) {
+    @content;
+  }
+}
+
+@mixin mobile-down {
+  @media (max-width: #{$breakpoint-sm - 1}) {
+    @content;
+  }
+}
+
+// Classes de visibilidade responsiva
+.hide-xs {
+  @include mobile-down {
+    display: none !important;
+  }
+}
+
+.hide-sm {
+  @include respond-to("sm") {
+    display: none !important;
+  }
+}
+
+.hide-md {
+  @include respond-to("md") {
+    display: none !important;
+  }
+}
+
+.hide-lg {
+  @include respond-to("lg") {
+    display: none !important;
+  }
+}
+
+.hide-xl {
+  @include respond-to("xl") {
+    display: none !important;
+  }
+}
+
+.show-xs {
+  display: none !important;
+  @include mobile-down {
+    display: block !important;
+  }
+}
+
+.show-sm {
+  display: none !important;
+  @include respond-to("sm") {
+    display: block !important;
+  }
+}
+
+.show-md {
+  display: none !important;
+  @include respond-to("md") {
+    display: block !important;
+  }
+}
+
+.show-lg {
+  display: none !important;
+  @include respond-to("lg") {
+    display: block !important;
+  }
+}
+
+.show-xl {
+  display: none !important;
+  @include respond-to("xl") {
+    display: block !important;
+  }
+}
+
+// Classes para ajustes de texto responsivos
+.text-center-xs {
+  @include mobile-down {
+    text-align: center !important;
+  }
+}
+
+.text-center-sm {
+  @include respond-to("sm") {
+    text-align: center !important;
+  }
+}
+
+.text-center-md {
+  @include respond-to("md") {
+    text-align: center !important;
+  }
+}
+
+// Classes para ajustes de margem responsivos
+.my-1-md {
+  @include respond-to("md") {
+    margin-top: $spacing-xs !important;
+    margin-bottom: $spacing-xs !important;
+  }
+}
+
+.my-2-md {
+  @include respond-to("md") {
+    margin-top: $spacing-sm !important;
+    margin-bottom: $spacing-sm !important;
+  }
+}
+
+.my-3-md {
+  @include respond-to("md") {
+    margin-top: $spacing-md !important;
+    margin-bottom: $spacing-md !important;
+  }
+}
+
+// Classes para ajustes de padding responsivos
+.py-1-md {
+  @include respond-to("md") {
+    padding-top: $spacing-xs !important;
+    padding-bottom: $spacing-xs !important;
+  }
+}
+
+.py-2-md {
+  @include respond-to("md") {
+    padding-top: $spacing-sm !important;
+    padding-bottom: $spacing-sm !important;
+  }
+}
+
+.py-3-md {
+  @include respond-to("md") {
+    padding-top: $spacing-md !important;
+    padding-bottom: $spacing-md !important;
+  }
+}
+
+// Ajustes para fontes responsivas
+.text-sm-xs {
+  @include mobile-down {
+    font-size: $font-size-sm !important;
+  }
+}
+
+.text-md-sm {
+  @include tablet-down {
+    font-size: $font-size-md !important;
+  }
+}
+
+// Container fluido
+.container-fluid {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+// Container com breakpoints
+.container {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+  
+  @include mobile-up {
+    max-width: 540px;
+  }
+  
+  @include tablet-up {
+    max-width: 720px;
+  }
+  
+  @include desktop-up {
+    max-width: 960px;
+  }
+  
+  @include large-desktop-up {
+    max-width: 1140px;
+  }
+} 

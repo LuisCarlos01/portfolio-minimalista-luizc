@@ -1,0 +1,60 @@
+@use "../base/variables" as *;
+
+// Cursor personalizado desativado - não será mais exibido
+.cursor-follower {
+  display: none !important;
+}
+
+// Reativando o cursor padrão do navegador para todos os elementos
+html {
+  cursor: auto !important;
+  
+  * {
+    cursor: auto !important;
+  }
+  
+  a, button, .btn, .clickable {
+    cursor: pointer !important;
+  }
+}
+
+// Manter apenas as melhorias de hover sem o cursor personalizado
+html.interactive-hover {
+  a, button, .btn, .task-checkbox, .portfolio-filter {
+    &:hover {
+      transform: translateY(-2px);
+      transition: transform 0.3s ease;
+    }
+  }
+}
+
+// Estilos para o cursor personalizado
+.custom-cursor {
+  position: fixed;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transition: transform 0.2s ease;
+  
+  &__circle {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: $accent-color;
+    transform: translate(-50%, -50%);
+    
+    &--main {
+      opacity: 0.5;
+    }
+    
+    &--secondary {
+      width: 40px;
+      height: 40px;
+      opacity: 0.3;
+    }
+  }
+} 

@@ -18,6 +18,22 @@ Projeto de portfolio desenvolvido com React e Vite com foco em design minimalist
 - Performance otimizada
 - Estratégias para carregamento rápido
 - Sistema de automação para monitoramento de conflitos
+- Sistema de lista de tarefas com persistência de dados
+- Transições de página com GSAP
+
+## 🎯 Gerenciador de Tarefas
+
+O projeto inclui um gerenciador de tarefas completo com as seguintes funcionalidades:
+
+- **Gerenciamento Completo**: Adicionar, editar, marcar como concluída e excluir tarefas
+- **Filtros de Visualização**: Todas, ativas ou concluídas
+- **Persistência de Dados**: Armazenamento local via localStorage
+- **Design Responsivo**: Adaptável a qualquer dispositivo
+- **Animações Suaves**: Feedback visual para todas as interações
+- **Compatibilidade com Tema**: Interface integrada ao design do site
+- **Atalhos de Teclado**: Suporte para Enter (salvar) e Escape (cancelar)
+
+Para acessar o gerenciador de tarefas, navegue até a seção "Tarefas" no menu principal.
 
 ## 🔧 Instalação e Configuração
 
@@ -90,6 +106,16 @@ Para iniciar o servidor Vite:
 ```bash
 npm run dev
 ```
+
+### Sistema de Animações Avançadas
+
+Utilizamos GSAP (GreenSock Animation Platform) para criar animações sofisticadas em todo o site:
+
+- **Animações Contextuais**: Cada seção possui animações específicas
+- **Transições Suaves**: Elementos surgem com suavidade ao rolar ou mudar de seção
+- **Efeitos Parallax**: Camadas de elementos se movem em velocidades diferentes durante a rolagem
+- **Sequências Animadas**: Elementos são animados em sequência para criar uma narrativa visual
+- **Animações Responsivas**: Adaptadas para diferentes tamanhos de tela
 
 ### Sistema de Automação
 
@@ -287,3 +313,42 @@ Para mais detalhes, consulte o arquivo `vite.config.js` na raiz do projeto.
 ## 📄 Licença
 
 Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes.
+
+## 🔄 Atualizações Recentes
+
+### Refatoração do Sistema de Estilos SASS
+
+O sistema de estilos SASS foi completamente reorganizado e otimizado para seguir as melhores práticas:
+
+#### Estrutura Modularizada
+
+- **Pasta Base**: Contém arquivos básicos de estilo como variáveis, mixins, reset, tipografia e utilitários
+- **Pasta Components**: Contém estilos específicos para cada componente
+- **Pasta Layout**: Contém sistemas de grid e utilitários responsivos 
+- **Pasta Pages**: Contém estilos específicos para cada página
+- **Pasta Themes**: Contém temas claro e escuro para customização
+
+#### Principais Correções
+
+- **Migração de @import para @use**: Substituição da sintaxe antiga de importação para a recomendada pelo Sass
+- **Correção de Variáveis**: Adição de variáveis ausentes como `$accent-color`, `$accent-hover` e `$danger-color`
+- **Criação de Arquivos Ausentes**: Criação dos arquivos de estilos inexistentes que causavam erros de compilação
+- **Sistema de Grid Responsivo**: Implementação de um sistema de grid flexível com classes para diferentes breakpoints
+- **Sistema de Temas**: Implementação de temas claro e escuro com variáveis CSS
+- **Correção de Funções Matemáticas**: Atualização para usar a nova sintaxe do Sass para operações matemáticas
+- **Tratamento de Warnings de Depreciação**: Correção de funções depreciadas como `darken()` e `lighten()`
+
+#### Benefícios da Nova Estrutura
+
+- **Melhor Organização**: Arquivos separados por responsabilidade
+- **Facilidade de Manutenção**: Componentes isolados facilitam atualizações
+- **Reutilização de Código**: Mixins e variáveis compartilhados
+- **Performance Aprimorada**: Compilação mais eficiente
+- **Compatibilidade Futura**: Preparação para Sass 2.0/3.0
+
+#### Próximos Passos para o Sistema de Estilos
+
+- Migração completa de funções color para namespace `color.adjust`
+- Substituição de divisões com `/` para usar `math.div` ou `calc()`
+- Implementação de modo escuro/claro com alternância por usuário
+- Criação de mais utilitários para animações e elementos comuns

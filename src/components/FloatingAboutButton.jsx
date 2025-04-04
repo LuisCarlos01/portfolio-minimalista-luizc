@@ -55,10 +55,10 @@ const FloatingAboutButton = () => {
       onClick={navigateToHome}
       role="button"
       tabIndex="0"
-      aria-label="Voltar para About me"
+      aria-label="Voltar para Home"
       style={{ display: "none" }}
     >
-      <span>About me</span>
+      <span>Página Inicial</span>
     </div>
   );
 };

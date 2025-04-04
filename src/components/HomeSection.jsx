@@ -8,7 +8,7 @@ import { useSection } from "../contexts/SectionContext";
 // Registra o plugin ScrollTrigger
 gsap.registerPlugin(ScrollTrigger);
 
-const HeroSection = () => {
+const HomeSection = () => {
   const typedEl = useRef(null);
   const profileRef = useRef(null);
   const textRef = useRef(null);
@@ -34,12 +34,6 @@ const HeroSection = () => {
 
   // Animações iniciais
   useEffect(() => {
-    // Verifica se os refs estão disponíveis antes de animar
-    if (!profileRef.current || !textRef.current || !btnGroupRef.current || !socialRef.current) {
-      console.warn("Um ou mais refs não estão disponíveis para animação");
-      return;
-    }
-
     // Animação inicial - fade in
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
@@ -124,7 +118,7 @@ const HeroSection = () => {
         <div className="container">
           <div className="hero-pic" ref={profileRef}>
             <img
-              src="./images/photos/perfil.jpg"
+              src="/images/photos/perfil.jpg"
               alt="Profile"
               onError={handleImageError}
             />
@@ -194,4 +188,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default HomeSection; 

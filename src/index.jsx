@@ -6,6 +6,16 @@ import reportWebVitals from "./reportWebVitals";
 import performance from "./utils/performance";
 import logger from "./utils/logger";
 
+// Silenciar avisos do React Router v6 sobre futuras mudanças no v7
+// Isso é temporário e deve ser resolvido adequadamente em uma atualização
+const originalConsoleWarn = console.warn;
+console.warn = function(msg, ...args) {
+  if (msg && typeof msg === 'string' && msg.includes('React Router Future Flag Warning')) {
+    return; // Silenciar avisos específicos do React Router
+  }
+  originalConsoleWarn.apply(console, [msg, ...args]);
+};
+
 // Configurar handler global para erros não capturados
 window.addEventListener("error", (event) => {
   logger.error("Erro global não capturado", {

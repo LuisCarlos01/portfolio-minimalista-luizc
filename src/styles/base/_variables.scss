@@ -21,6 +21,8 @@ $purple-gradient-start: rgba(155, 89, 182, 0.9);
 $purple-gradient-end: rgba(142, 68, 173, 0.9);
 
 // Cores de destaque
+$accent-color: #9b59b6;
+$accent-hover: #8e44ad;
 $accent-cyan: #3498db;
 $accent-green: #2ecc71;
 $accent-yellow: #f1c40f;
@@ -33,6 +35,7 @@ $error-color: #e74c3c;
 $success-color: #2ecc71;
 $warning-color: #f39c12;
 $info-color: #3498db;
+$danger-color: #e74c3c;
 
 // Cores com transparência
 $overlay-dark: rgba(18, 18, 18, 0.7);
@@ -96,12 +99,15 @@ $shadow-lg: 0 10px 25px rgba(0, 0, 0, 0.25);
   --purple-hover: #{$purple-hover};
   --purple-light: #{$purple-light};
   --purple-dark: #{$purple-dark};
+  --accent-color: #{$accent-color};
+  --accent-hover: #{$accent-hover};
   --gray-light: #{$gray-light};
   --gray-dark: #{$gray-dark};
   --error-color: #{$error-color};
   --success-color: #{$success-color};
   --warning-color: #{$warning-color};
   --info-color: #{$info-color};
+  --danger-color: #{$danger-color};
   --accent-cyan: #{$accent-cyan};
   --accent-green: #{$accent-green};
   --accent-yellow: #{$accent-yellow};

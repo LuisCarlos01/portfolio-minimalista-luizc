@@ -1,0 +1,161 @@
+@use "../base/variables" as *;
+
+// Sistema de grid responsivo
+.container-grid {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+// Classes de coluna
+@for $i from 1 through 12 {
+  .col-#{$i} {
+    flex: 0 0 percentage($i / 12);
+    max-width: percentage($i / 12);
+    padding: 0 15px;
+  }
+}
+
+// Classes responsivas para tablets
+@media (max-width: $breakpoint-md) {
+  @for $i from 1 through 12 {
+    .col-md-#{$i} {
+      flex: 0 0 percentage($i / 12);
+      max-width: percentage($i / 12);
+      padding: 0 15px;
+    }
+  }
+}
+
+// Classes responsivas para celulares
+@media (max-width: $breakpoint-sm) {
+  @for $i from 1 through 12 {
+    .col-sm-#{$i} {
+      flex: 0 0 percentage($i / 12);
+      max-width: percentage($i / 12);
+      padding: 0 15px;
+    }
+  }
+}
+
+// Classes de espaçamento entre colunas
+.gutters-sm {
+  margin-left: -5px;
+  margin-right: -5px;
+  
+  > [class*="col-"] {
+    padding: 0 5px;
+  }
+}
+
+.gutters-md {
+  margin-left: -10px;
+  margin-right: -10px;
+  
+  > [class*="col-"] {
+    padding: 0 10px;
+  }
+}
+
+.gutters-lg {
+  margin-left: -20px;
+  margin-right: -20px;
+  
+  > [class*="col-"] {
+    padding: 0 20px;
+  }
+}
+
+// Classes de alinhamento
+.row-center {
+  justify-content: center;
+}
+
+.row-end {
+  justify-content: flex-end;
+}
+
+.row-between {
+  justify-content: space-between;
+}
+
+.row-around {
+  justify-content: space-around;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+}
+
+// Classes de ordem
+@for $i from 1 through 5 {
+  .order-#{$i} {
+    order: $i;
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  @for $i from 1 through 5 {
+    .order-md-#{$i} {
+      order: $i;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  @for $i from 1 through 5 {
+    .order-sm-#{$i} {
+      order: $i;
+    }
+  }
+}
+
+// Utilitários para grid
+.no-gutters {
+  margin-left: 0;
+  margin-right: 0;
+  
+  > [class*="col-"] {
+    padding: 0;
+  }
+}
+
+.row-gap-sm {
+  row-gap: $spacing-sm;
+}
+
+.row-gap-md {
+  row-gap: $spacing-md;
+}
+
+.row-gap-lg {
+  row-gap: $spacing-lg;
+}
+
+.col-gap-sm {
+  column-gap: $spacing-sm;
+}
+
+.col-gap-md {
+  column-gap: $spacing-md;
+}
+
+.col-gap-lg {
+  column-gap: $spacing-lg;
+} 

@@ -1,0 +1,112 @@
+@use "../base/variables" as *;
+
+// Tema escuro (padrão)
+.dark-theme {
+  // Cores de fundo
+  --background: #{$background-dark};
+  --card-bg: #{$card-bg-dark};
+  --overlay-bg: rgba(0, 0, 0, 0.7);
+  
+  // Cores de texto
+  --text-color: #{$text-dark};
+  --text-secondary: #{$gray-light};
+  
+  // Cores de borda
+  --border-color: rgba(255, 255, 255, 0.1);
+  
+  // Cores de elementos
+  --input-bg: rgba(30, 30, 30, 0.8);
+  --input-border: rgba(155, 89, 182, 0.3);
+  --scrollbar-track: #2a2a2a;
+  --scrollbar-thumb: #{$primary-color-dark};
+  
+  // Sombras
+  --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  --text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  
+  // Elementos específicos
+  --header-bg: rgba(18, 18, 18, 0.9);
+  --footer-bg: #1a1a1a;
+  --modal-bg: #222;
+  --tooltip-bg: #333;
+  
+  // Estilização específica do tema escuro
+  // Cartões com borda
+  .card {
+    border: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+  }
+  
+  // Efeito de glow para elementos destacados
+  .highlight {
+    box-shadow: 0 0 15px rgba($primary-color, 0.3);
+  }
+  
+  // Personalização da barra de rolagem
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 5px;
+    
+    &:hover {
+      background: $primary-color;
+    }
+  }
+  
+  // Buttons com gradiente
+  .btn-primary {
+    background: linear-gradient(135deg, $primary-color, $primary-color-dark);
+    
+    &:hover {
+      background: linear-gradient(135deg, lighten($primary-color, 5%), lighten($primary-color-dark, 5%));
+    }
+  }
+  
+  // Elementos de formulário
+  input, textarea, select {
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
+    color: var(--text-color);
+    
+    &:focus {
+      border-color: $primary-color;
+      box-shadow: 0 0 0 2px rgba($primary-color, 0.25);
+    }
+    
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+  
+  // Links
+  a {
+    color: lighten($primary-color, 10%);
+    
+    &:hover {
+      color: lighten($primary-color, 20%);
+    }
+  }
+  
+  // Código
+  code {
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+  }
+  
+  // Ícones
+  .icon {
+    color: $gray-light;
+    
+    &:hover {
+      color: $primary-color;
+    }
+  }
+} 
